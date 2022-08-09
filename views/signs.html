@@ -1,42 +1,16 @@
-<!--<div id="details-page">
-    <div id="q-details">
-        <div>
-            <b style="color: #0171ec;">{{sign.code}} {{sign.name}}</b>
-        </div>
-        <div id="q-image" style="margin-top: 10px; text-align: center">
-            <img src="images/signs/{{ sign.image }}.png" />
-        </div>
-        <div id="answers" style="margin-top: 10px;">
-            <div>
-                <div class="a-text">{{ sign.detail }}</div>
-            </div>
-        </div>
-    </div>
-    <div class="menu">
-        <div class="item" ng-click="prevQuestion()">
-            <i class="fa fa-arrow-left"></i>
-        </div>
-        <a class="item" href="#!index">
-            <i class="fa fa-home"></i>
+<div style="display: flex;">
+    <div style="width: 10%; text-align: left;">
+        <a href="#!list-sign">
+            <span style="color:#0171ec" class="fa fa-chevron-left"></span>
         </a>
-        <a class="item" href="#!list">
-            <i class="fa fa-th"></i>
-        </a>
-        <div class="item" ng-click="toggleResult()">
-            <i class="fa fa-question"></i>
-        </div>
-        <div class="item" ng-click="nextQuestion()">
-            <i class="fa fa-arrow-right"></i>
-        </div>
     </div>
-</div>-->
+    <div style="width: 80%; text-align: center;"><strong>{{signTopic.display}}</strong></div>
+    <div style="width: 10%; text-align: right;">
+    </div>
+</div>
+<p></p>
+
 <div id="list-danger-page" class="page has-menu">
-    <h1 style="text-align: center;">{{signTopic.display}}</h1>
-    <div class="menu">
-        <a class="item" href="#!index">
-            <i class="fa fa-home"></i>
-        </a>
-    </div>
     <div id="list" style="padding: 20px;">
         <div class="item" ng-repeat="q in signs" style="border-bottom: #e9e7e7;border-bottom-width: 1px;border-bottom-style: solid;">
             <div>

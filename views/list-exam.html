@@ -1,11 +1,17 @@
-<div id="list-exam-page" class="page has-menu">
-    <h1 style="text-align: center;margin-bottom: 0px">Bộ đề thi {{licenseCode}}</h1>
-    <h5 style="text-align: center;margin-top: 0px;font-weight: normal">(Phải trả lời đúng {{licensePass}} câu và không sai câu liệt)</h5>
-    <div class="menu">
-        <a class="item" href="#!index">
-            <i class="fa fa-home"></i>
+<div style="display: flex;">
+    <div style="width: 10%; text-align: left;">
+        <a href="#!index">
+            <span style="color:#0171ec" class="fa fa-chevron-left"></span>
         </a>
     </div>
+    <div style="width: 80%; text-align: center;"><strong>Bộ đề thi {{licenseCode}}</strong></div>
+    <div style="width: 10%; text-align: right;">
+    </div>
+</div>
+<p></p>
+
+<div id="list-exam-page" class="page has-menu">
+    <h5 style="text-align: center;margin-top: 0px;font-weight: normal">(Phải trả lời đúng {{licensePass}} câu và không sai câu liệt)</h5>
     <div id="list">
         <div id="exam" ng-repeat="item in list" style = "height: 130px;width: 165px;{{ item.css_class }}">
             <a style="{{item.title_css}} font-weight:bold;" href="#!exam?examCode={{ item .index}}">Đề số {{ item.index }}</a>

@@ -1,10 +1,15 @@
-<div id="list-wrong-page" class="page has-menu">
-    <h1 style="text-align: center;">Các câu sai</h1>
-    <div class="menu">
-        <a class="item" href="#!index">
-            <i class="fa fa-home"></i>
+<div style="display: flex;">
+    <div style="width: 10%; text-align: left;">
+        <a href="#!index">
+            <span style="color:#0171ec" class="fa fa-chevron-left"></span>
         </a>
     </div>
+    <div style="width: 80%; text-align: center;"><strong>Các câu sai</strong></div>
+    <div style="width: 10%; text-align: right;">
+    </div>
+</div>
+<p></p>
+<div id="list-wrong-page" class="page has-menu">
     <div style="padding: 10px; color: blue; display: {{ list.length ? 'none' : 'block' }}">
         Xin chúc mừng, hiện tại bạn không có câu nào làm sai!
     </div>

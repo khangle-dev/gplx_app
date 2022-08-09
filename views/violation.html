@@ -1,11 +1,15 @@
-<div id="list-danger-page" class="page has-menu">
-    <h1 style="text-align: center;">Luật giao thông</h1>
-    <h3 style="text-align: center;">{{topic.display}}</h3>
-    <div class="menu">
-        <a class="item" href="#!index">
-            <i class="fa fa-home"></i>
+<div style="display: flex;">
+    <div style="width: 10%; text-align: left;">
+        <a href="#!list-violation?violationGroup={{topic.code}}&violationType={{topic.code}}">
+            <span style="color:#0171ec" class="fa fa-chevron-left"></span>
         </a>
     </div>
+    <div style="width: 80%; text-align: center;"><strong>{{topic.display}}</strong></div>
+    <div style="width: 10%; text-align: right;">
+    </div>
+</div>
+
+<div id="list-danger-page" class="page has-menu">
     <div id="list">
         <div style="margin-bottom: 10px;">
             <h4>Hành vi</h4>

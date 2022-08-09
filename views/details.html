@@ -1,4 +1,17 @@
-<h1 style="text-align: center;">Ôn tập</h1>
+<div style="display: flex;">
+    <div style="width: 10%; text-align: left;">
+        <a href="#!index">
+            <span style="color:#0171ec" class="fa fa-chevron-left"></span>
+        </a>
+    </div>
+    <div style="width: 80%; text-align: center;"><strong>Ôn tập</strong></div>
+    <div style="width: 10%; text-align: right;">
+        <div class="item" ng-click="toggleResult()">
+            <em style="color:#ff9300" class="fa fa-lightbulb"></em>
+        </div>
+    </div>
+</div>
+<h4></h4>
 <div id="details-page">
     <div id="q-details" ng-swipe-left="nextQuestion()" ng-swipe-right="prevQuestion()" style="min-height: 77vh;">
         <div>
@@ -21,19 +34,15 @@
     </div>
     <div class="menu">
         <div class="item" ng-click="prevQuestion()">
-            <i class="fa fa-arrow-left"></i>
+            <em class="fa fa-chevron-left"></em>
         </div>
-        <a class="item" href="#!index">
-            <i class="fa fa-home"></i>
-        </a>
+
         <a class="item" href="#!list">
-            <i class="fa fa-th"></i>
+            <em class="fa fa-th"></em>
         </a>
-        <div class="item" ng-click="toggleResult()">
-            <i class="fa fa-question"></i>
-        </div>
+
         <div class="item" ng-click="nextQuestion()">
-            <i class="fa fa-arrow-right"></i>
+            <em class="fa fa-chevron-right"></em>
         </div>
     </div>
 </div>

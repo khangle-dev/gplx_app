@@ -1,20 +1,31 @@
-<div id="list-danger-page" class="page has-menu">
-    <h1 style="text-align: center;">Chủ đề</h1>
-    <div class="menu">
-        <a class="item" href="#!index">
-            <i class="fa fa-home"></i>
+<div style="display: flex;">
+    <div style="width: 10%; text-align: left;">
+        <a href="#!index">
+            <span style="color:#0171ec" class="fa fa-chevron-left"></span>
         </a>
     </div>
+    <div style="width: 80%; text-align: center;"><strong>Chủ đề</strong></div>
+    <div style="width: 10%; text-align: right;">
+    </div>
+</div>
+<p></p>
+
+<div id="list-danger-page" class="page has-menu">
     <div id="list">
-        <div class="item" ng-repeat="q in list" style="display: {{ q.num > 0 ? 'block' : 'none' }};">
+        <div class="item" ng-repeat="q in list" style="display: {{ q.num > 0 ? 'block' : 'none' }}; margin-top: 20px;">
             <a href="#!question?index=0&topic={{$index}}" >
                 
                 <div>
                     <div style="display: flex; align-items: center;">
-                        <img style="border-radius: 5px; background-color: red; width: 20px; height: 20px; margin-right: 10px;"
-                    src="images/assets/topic_code_{{q.code}}.png"><b style="color: #0171ec;"> {{ q.display }}</b>
+                        <img style="border-radius: 6px; background-color: red; width: 38px; height: 38px; margin-right: 10px;"
+                    src="images/assets/topic_code_{{q.code}}.png">
+                    <div>
+                        <b style="color: #0171ec;"> {{ q.display }}</b>
+                        <div style="color: darkgray;">{{ q.subTitle }}</div>
                     </div>
-                    <div style="color: darkgray;">{{ q.subTitle }}</div>
+                    
+                    </div>
+                    
                 </div>
 
             </a>

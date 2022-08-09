@@ -1,0 +1,74 @@
+
+  .controls-container {
+    display: flex;
+    margin: 50px 0 25px;
+  }
+  
+  .controls {
+    display: inline-flex;
+    justify-content: space-between;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .controls input {
+    width: 50%;
+  }
+  
+  .segment {
+    position: relative;
+    text-align: center;
+    z-index: 1;
+  }
+  
+  .segment label {
+    cursor: pointer;
+    display: block;
+    padding: 10px;
+    transition: color 0.5s ease;
+  }
+  
+  .segment.active label {
+    color: #fff;
+  }
+  
+  .controls::before {
+    content: "";
+    background: #5465ff;
+    border-radius: 8px;
+    width: var(--highlight-width);
+    transform: translateX(var(--highlight-x-pos));
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: 0;
+    z-index: 0;
+  }
+  
+  /* Only allow transitions once component is ready */
+  .controls.ready::before {
+    transition: transform 0.3s ease, width 0.3s ease;
+  }
+  
+  .item-container {
+    justify-content: space-between;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 90%;
+  }
+  
+  .item {
+    justify-content: space-between;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 90%;
+  }

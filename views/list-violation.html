@@ -1,14 +1,18 @@
-<div id="list-danger-page" class="page has-menu">
-    <h1 style="text-align: center;">Luật giao thông</h1>
-    <h3 style="text-align: center;">{{topic.display}}</h3>
-    <div class="menu">
-        <a class="item" href="#!index">
-            <i class="fa fa-home"></i>
+<div style="display: flex;">
+    <div style="width: 10%; text-align: left;">
+        <a href="#!list-law">
+            <span style="color:#0171ec" class="fa fa-chevron-left"></span>
         </a>
     </div>
+    <div style="width: 80%; text-align: center;"><strong>{{topic.display}}</strong></div>
+    <div style="width: 10%; text-align: right;">
+    </div>
+</div>
+
+<div id="list-danger-page" class="page has-menu">
     <div id="list">
         <div class="item" ng-repeat="q in list" style = "border-bottom: 1px dashed #a0a0a0; margin-top: 20px;">
-            <a href="#!violation?index={{q.no}}&violationGroup={{topic.code}}">
+            <a href="#!violation?index={{q.no}}&violationGroup={{topic.code}}&violationType={{topic.code}}">
                 <div>
                     <div style="display: flex;">
                         <b style="color: #0171ec;"> {{ q.violation }}</b>
