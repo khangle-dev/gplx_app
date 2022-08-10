@@ -1,15 +1,12 @@
-<div style="display: flex;">
-    <div style="width: 10%; text-align: left;">
-        <a href="#!index">
-            <span style="color:#0171ec" class="fa fa-chevron-left"></span>
-        </a>
-    </div>
-    <div style="width: 80%; text-align: center;"><strong>Chủ đề</strong></div>
-    <div style="width: 10%; text-align: right;">
+<div class="head-navigation">
+    <a class="left" href="#!index">
+        <span style="color:#0171ec" class="fa fa-chevron-left"></span>
+    </a>
+    <div class="center">
+        <strong>Chủ đề</strong></div>
+    <div class="right">
     </div>
 </div>
-<p></p>
-
 <div id="list-danger-page" class="page has-menu">
     <div id="list">
         <div class="item" ng-repeat="q in list" style="display: {{ q.num > 0 ? 'block' : 'none' }}; margin-top: 20px;">

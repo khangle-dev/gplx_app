@@ -1,16 +1,14 @@
-<div style="display: flex;">
-    <div style="width: 10%; text-align: left;">
-        <a href="#!list-exam">
-            <span style="color:#0171ec" class="fa fa-chevron-left"></span>
-        </a>
-    </div>
-    <div style="width: 80%; text-align: center;"><strong>Đề số {{examCode}}</strong></div>
-    <div style="width: 10%; text-align: right;">
-        <div class="item" ng-click="toggleResult()">
-            <em style="color:#ff9300" class="fa fa-lightbulb"></em>
-        </div>
+<div class="head-navigation">
+    <a class="left" href="#!list-exam">
+        <span style="color:#0171ec" class="fa fa-chevron-left"></span>
+    </a>
+    <div class="center">
+        <strong>Đề số {{examCode}}</strong></div>
+    <div class="right" ng-click="toggleResult()">
+        <em style="color:#ff9300" class="fa fa-lightbulb"></em>
     </div>
 </div>
+
 <h4></h4>
 
 <div id="details-page">

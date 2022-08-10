@@ -1,16 +1,14 @@
-<div style="display: flex;">
-    <div style="width: 10%; text-align: left;">
-        <a href="#!index">
-            <span style="color:#0171ec" class="fa fa-chevron-left"></span>
-        </a>
-    </div>
-    <div style="width: 80%; text-align: center;"><strong>Ôn tập</strong></div>
-    <div style="width: 10%; text-align: right;">
-        <div class="item" ng-click="toggleResult()">
-            <em style="color:#ff9300" class="fa fa-lightbulb"></em>
-        </div>
+<div class="head-navigation">
+    <a class="left" href="#!index">
+        <span style="color:#0171ec" class="fa fa-chevron-left"></span>
+    </a>
+    <div class="center">
+        <strong>Ôn tập</strong></div>
+    <div class="right" ng-click="toggleResult()">
+        <em style="color:#ff9300" class="fa fa-lightbulb"></em>
     </div>
 </div>
+
 <h4></h4>
 <div id="details-page">
     <div id="q-details" ng-swipe-left="nextQuestion()" ng-swipe-right="prevQuestion()" style="min-height: 77vh;">

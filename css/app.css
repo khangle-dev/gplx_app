@@ -58,7 +58,7 @@ img {
 }
 
 .page {
-    padding: 10px;
+    padding: 20px;
 }
 
 .has-menu {
@@ -101,7 +101,6 @@ img {
 }
 
 .page-home {
-    padding: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -173,6 +172,37 @@ img {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.head-navigation {
+    display: flex; 
+    box-shadow: 0 0 5px rgb(0 0 0 / 10%); 
+    padding: 10px;
+    min-height: 56px;
+}
+.head-navigation .left {
+    width: 10%; 
+    display: flex; 
+    text-align: left;
+    align-items: center;
+    font-size: 24px;
+    padding-left: 10px;
+}
+.head-navigation .center {
+    width: 80%; 
+    display: flex; 
+    text-align: center; 
+    align-items: center; 
+    justify-content: center;
+}
+.head-navigation .right {
+    width: 10%; 
+    display: flex; 
+    text-align: right; 
+    justify-content: right; 
+    align-items: center;
+    font-size: 24px;
+    padding-right: 10px;
+}
+
 #list-page #list {
     display: flex;
     flex-wrap: wrap;
@@ -232,6 +262,10 @@ img {
 #list-page #list a.wrong:active {
     background-color: #922420;
     border-color: #922420;
+}
+
+#details-page {
+    padding: 20px;
 }
 
 #details-page #q-details {
@@ -340,7 +374,7 @@ img {
 }
 
 #list-danger-page {
-    padding: 0px;
+    
 }
 
 #list-danger-page #list {

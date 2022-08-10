@@ -1,14 +1,12 @@
-<div style="display: flex;">
-    <div style="width: 10%; text-align: left;">
-        <a href="#!list-law">
-            <span style="color:#0171ec" class="fa fa-chevron-left"></span>
-        </a>
-    </div>
-    <div style="width: 80%; text-align: center;"><strong>{{topic.display}}</strong></div>
-    <div style="width: 10%; text-align: right;">
+<div class="head-navigation">
+    <a class="left" href="#!list-law">
+        <span style="color:#0171ec" class="fa fa-chevron-left"></span>
+    </a>
+    <div class="center">
+        <strong>{{topic.display}}</strong></div>
+    <div class="right">
     </div>
 </div>
-
 <div id="list-danger-page" class="page has-menu">
     <div id="list">
         <div class="item" ng-repeat="q in list" style = "border-bottom: 1px dashed #a0a0a0; margin-top: 20px;">

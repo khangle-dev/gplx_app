@@ -88,12 +88,42 @@ img {
   }
 }
 
+.head-navigation {
+  display: flex; 
+  box-shadow: 0 0 5px rgb(0 0 0 / 10%); 
+  padding: 10px;
+  min-height: 56px;
+}
+.head-navigation .left {
+  width: 10%; 
+  display: flex; 
+  text-align: left;
+  align-items: center;
+  font-size: 24px;
+  padding-left: 10px;
+}
+.head-navigation .center {
+  width: 80%; 
+  display: flex; 
+  text-align: center; 
+  align-items: center; 
+  justify-content: center;
+}
+.head-navigation .right {
+  width: 10%; 
+  display: flex; 
+  text-align: right; 
+  justify-content: right; 
+  align-items: center;
+  font-size: 24px;
+  padding-right: 10px;
+}
+
 .toast-top-center {
   top: @page-padding;
 }
 
 .page-home {
-  padding: 0px;
   min-height: 100vh;
   display: flex;
   align-items: center;
