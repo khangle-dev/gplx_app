@@ -120,7 +120,7 @@ img {
     text-align: center;
     display: inline-grid;
     justify-content: center;
-    box-shadow: 0 0 5px gray;
+    box-shadow: 0 0 3px gray;
 }
 
 .page-home .item-hint {
