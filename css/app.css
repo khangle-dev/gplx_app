@@ -112,7 +112,7 @@ img {
     justify-content: flex-start;
     color: #fff;
     background-color: #337ab7;
-    border-radius: 10px;
+    border-radius: 16px;
     height: 150px;
     width: 165px;
     padding: 10px 10px 10px 10px;
@@ -120,6 +120,7 @@ img {
     text-align: center;
     display: inline-grid;
     justify-content: center;
+    box-shadow: 0 0 5px gray;
 }
 
 .page-home .item-hint {
@@ -422,9 +423,10 @@ img {
     width: 150px;
     text-align: center;
     cursor: pointer;
-    margin-top: 5px;
-    margin-right: 5px;
+    margin-top: 15px;
+    margin-right: 15px;
     padding: 10px;
+    box-shadow: 0 0 3px grey
 }
 
 #list-exam-page #list a:active {
