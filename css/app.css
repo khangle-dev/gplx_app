@@ -123,6 +123,12 @@ img {
     box-shadow: 0 0 16px gray;
 }
 
+.page-home .item2 {
+    width: 165px;
+    margin: 10px;
+    margin-top: 0px;
+}
+
 .page-home .item-hint {
     background-color: #5750d9
 }
@@ -214,13 +220,14 @@ img {
 
 #list-page #list a {
     display: inline-block;
-    border: 1px solid #a0a0a0;
     line-height: 50px;
     width: 50px;
     text-align: center;
     cursor: pointer;
     margin-top: 5px;
     margin-right: 5px;
+    box-shadow: 0 0 2px gray;
+    border-radius: 12px;
 }
 
 #list-page #list a:active {
@@ -418,7 +425,6 @@ img {
 
 #list-exam-page #list #exam {
     display: inline-block;
-    border: 1px solid #a0a0a0;
     height: 150px;
     width: 150px;
     text-align: center;
@@ -426,7 +432,7 @@ img {
     margin-top: 15px;
     margin-right: 15px;
     padding: 10px;
-    box-shadow: 0 0 3px grey
+    box-shadow: 0 0 9px grey
 }
 
 #list-exam-page #list a:active {

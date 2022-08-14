@@ -7,25 +7,23 @@
     <div class="right">
     </div>
 </div>
-<div id="list-danger-page" class="page has-menu">
-    <div id="list">
-        <div class="item" ng-repeat="q in list" style="display: {{ q.num > 0 ? 'block' : 'none' }}; margin-top: 20px;">
-            <a href="#!question?index=0&topic={{$index}}" >
-                
-                <div>
-                    <div style="display: flex; align-items: center;">
-                        <img style="border-radius: 6px; background-color: red; width: 38px; height: 38px; margin-right: 10px;"
-                    src="images/assets/topic_code_{{q.code}}.png">
+<div class="controls-container">
+    <div class="item-container">
+        <div style="border-bottom: #e9e7e7;border-bottom-width: 1px;border-bottom-style: solid;" ng-repeat="q in list">
+            <div class="item" style="display: {{ q.num > 0 ? 'block' : 'none' }}; margin: 10px; margin-left: 20px;">
+                <a href="#!question?index=0&topic={{$index}}" >
                     <div>
-                        <b style="color: #0171ec;"> {{ q.display }}</b>
-                        <div style="color: darkgray;">{{ q.subTitle }}</div>
+                        <div style="display: flex; align-items: center;">
+                            <img style="border-radius: 6px; background-color: {{paletteColor[$index]}}; width: 38px; height: 38px; margin-right: 10px;"
+                            src="images/assets/topic_code_{{q.code}}.png">
+                            <div>
+                                <b style="color: #0171ec;"> {{ q.display }}</b>
+                                <div style="color: darkgray;">{{ q.subTitle }}</div>
+                            </div>
+                        </div>
                     </div>
-                    
-                    </div>
-                    
-                </div>
-
-            </a>
+                </a>
+            </div>
         </div>
     </div>
 </div>

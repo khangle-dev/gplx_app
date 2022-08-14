@@ -20,4 +20,29 @@ if (localStorage.getItem("is_license")){
     localStorage.setItem("is_license", "B2")
 }
 
-var license = fullLicenses.filter(function(lic){return lic.code==(localStorage.getItem("is_license")?localStorage.getItem("is_license"):"B2")})[0]
+let license = fullLicenses.filter(function(lic){return lic.code==(localStorage.getItem("is_license")?localStorage.getItem("is_license"):"B2")})[0]
+
+const paletteColor = [
+    "#aa66cc",
+    "#ff8800",
+    "#0099cc",
+    "#669900",
+    "#0096ff",
+    "#aa66cc",
+    "#ff4444",
+    "#008f51",
+    "red",
+    "#03DAC5",
+    "#ffbb33",
+    "#aa66cc",
+    "#ff8800",
+    "#0099cc",
+    "#669900",
+    "#ff8800",
+    "#aa66cc",
+    "#ff4444",
+    "#cc0000",
+    "#f17a0a",
+    "#03DAC5",
+    "#ffbb33",
+  ]

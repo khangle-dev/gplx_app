@@ -8,11 +8,11 @@
     </div>
 </div>
 <p></p>
-<div id="list-danger-page" class="page has-menu">
-    <div id="list">
-        <div class="item" ng-repeat="q in list">
+<div class="controls-container">
+    <div class="item-container">
+        <div style="border-bottom: #e9e7e7;border-bottom-width: 1px;border-bottom-style: solid;" ng-repeat="q in list">
             <a href="#!signs?index=0&signType={{q.signType}}">
-                <div>
+                <div style="margin: 10px; margin-left: 20px">
                     <div style="display: flex; align-items: center;">
                         <img style="width: 20px; height: 20px; margin-right: 10px;"
                     src="images/assets/topic_sign_{{$index}}.png"><b style="color: #0171ec;"> {{ q.display }}</b>
@@ -23,4 +23,3 @@
         </div>
     </div>
 </div>
-
