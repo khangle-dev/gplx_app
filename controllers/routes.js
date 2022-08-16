@@ -1,4 +1,4 @@
-var app = angular.module("app-root", ["ngRoute", "ngTouch", "ngAnimate"]);
+var app = angular.module("app-root", ["ngRoute", "ngTouch", "ngAnimate", "ngSanitize"]);
 app.config(function($routeProvider) {
     $routeProvider
         .when("/list", {
