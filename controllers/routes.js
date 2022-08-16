@@ -73,6 +73,10 @@ app.config(function($routeProvider) {
             templateUrl: "views/violation.html",
             controller: "violationCtrl"
         })
+        .when("/check-violation", {
+            templateUrl: "views/check-violation.html",
+            controller: "checkCtrl"
+        })
         .otherwise({
             templateUrl: "views/home.html",
             controller: "homeCtrl"

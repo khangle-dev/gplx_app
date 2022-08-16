@@ -1,0 +1,76 @@
+<style>
+    .css_table {
+        display: table;
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    .row_right {
+        border-bottom: 1px solid #e0e0e0;
+        text-align: right;
+        padding: 16px;
+    }
+
+    .row_left {
+        border-bottom: 1px solid #e0e0e0;
+        text-align: left;
+        padding: 16px;
+    }
+
+    table {
+        display: table;
+        border-collapse: separate;
+        box-sizing: border-box;
+        text-indent: initial;
+        border-spacing: 2px;
+        border-color: grey;
+        max-width: 100%;
+        background-color: transparent;
+    }
+
+    .css-tt {
+        text-transform: uppercase;
+        padding: 10px 10px;
+        border-radius: 8px;
+        border: 1px solid rgba(233,30,99,0.5);
+    }
+
+    .body_table {
+        background-color: #fff;
+        color: rgba(0,0,0,0.87);
+        border-radius: 10px;
+        border: 1px solid rgba(0,0,0,0.12);
+        overflow: hidden;
+        margin-bottom: 10px;
+    }
+
+  </style>
+<div class="head-navigation">
+    <a class="left" href="#!">
+        <span style="color:#0171ec" class="fa fa-chevron-left"></span>
+    </a>
+    <div class="center">
+        <strong>Kiểm tra phạt nguội</strong></div>
+    <div class="right">
+        
+    </div>
+</div>
+
+<div class="page has-menu" style="text-align: justify;">
+    <form style="margin: auto;max-width: 600px;" name="checkForm" ng-submit="submit()">
+        <div class="item" style="margin-top: 30px;margin-bottom: 30px;text-align: center">
+            <input type="radio" id="car" title="Ô Tô" name="lawRadio" ng-model="loaixe" value="1"/> <label for="car">Ô tô</label>
+            <input type="radio" id="bycicle" title="Xe Máy" name="lawRadio" ng-model="loaixe" value="2" /> <label for="bycicle">Xe máy</label>
+            <input type="radio" id="electric" title="Xe Máy Điện" name="lawRadio" ng-model="loaixe" value="3" /> <label for="electric">Xe máy điện</label>
+        </div>
+        <div>
+            <input style="font-size: 16px;width: 100%;padding: 12px;border-radius: 6px;border: 1px solid #e0e0e0;" type="text" name="bienso" ng-model="bienso" ng-minlength="3" ng-maxlength="10" placeholder="Nhập vào biển số VD: 51H12345">
+        </div>
+        <div style="margin: 20px;">
+             <button style="font-size: 16px;width: 100%;padding: 12px;border-radius: 6px;border: 1px solid #0171ec; color: white;background-color: #0171ec;" type="submit" id="submit">KIỂM TRA PHẠT NGUỘI</button>
+        </div>
+    
+        <div ng-bind-html="result"></div>
+    </form>
+</div>
