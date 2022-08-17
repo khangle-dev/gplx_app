@@ -2,10 +2,12 @@ app.controller("checkCtrl", function ($scope, $sce, $interval) {
     $scope.bienso = ""
     $scope.loaixe = "1"
     $scope.result = ""
-
+    $scope.disableBtn = false
     $scope.countTime = 0
 
     $scope.submit = function() {
+        $interval.cancel($scope.promise)
+        $scope.disableBtn = true
         let settings = {
             "url": "https://phatnguoi.herokuapp.com/phatnguoi",
             "method": "POST",
@@ -17,6 +19,7 @@ app.controller("checkCtrl", function ($scope, $sce, $interval) {
         };
 
         $.ajax(settings).done(function (response) {
+            $scope.disableBtn = false
             $interval.cancel($scope.promise)
             $scope.countTime = 0
             $scope.result = $sce.trustAsHtml(response)
@@ -34,7 +37,8 @@ app.controller("checkCtrl", function ($scope, $sce, $interval) {
                 $scope.result = "<center><p><span style='color:#ec3700'>Đang có rất đông lượt tìm kiếm</br>xin chờ trong giây lát...</span></p><p>⏰ Khoảng thời gian tra cứu tốt và chính xác nhất từ 18h tối đến 6h sáng</p></center>"
             }
 
-            if ($scope.countTime >= 18) {
+            if ($scope.countTime >= 30) {
+                $scope.disableBtn = false
                 $interval.cancel($scope.promise)
                 $scope.countTime = 0
                 $scope.result = "<center><p><span style='color:#ec3700'>Không thể kết nối dữ liệu</br>Vui lòng thử lại sau</span></p><p>⏰ Khoảng thời gian tra cứu tốt và chính xác nhất từ 18h tối đến 6h sáng</p></center>"
