@@ -256,7 +256,7 @@ function resetQuestion() {
 function resetIndex() {
     if (license.code == "A1") {
         fullQuestions = fullQuestions.map(function (question) {
-            var item = question
+            var item = { ...question }
             item.no = item.a1
             return item
         })
@@ -264,7 +264,7 @@ function resetIndex() {
 
     if (license.code == "A2") {
         fullQuestions = fullQuestions.map(function (question) {
-            var item = question
+            var item = { ...question }
             item.no = item.a2
             return item
         })
@@ -272,7 +272,7 @@ function resetIndex() {
 
     if (license.code == "A3") {
         fullQuestions = fullQuestions.map(function (question) {
-            var item = question
+            var item = { ...question }
             item.no = item.a3
             return item
         })
@@ -280,16 +280,19 @@ function resetIndex() {
 
     if (license.code == "A4") {
         fullQuestions = fullQuestions.map(function (question) {
-            var item = question
+            var item = { ...question }
             item.no = item.a4
             return item
         })
     }
 
     if (license.code == "B1") {
-        fullQuestions = fullQuestions.map(function (question) {
-            var item = question
-            item.no = item.b1
+        fullQuestions = originalQuestions.filter(function (item) { return item.b1 > 0 }).map(function (question) {
+            var item = { ...question }
+            if (item.no >= 193) {
+                item.no = item.no - 26
+            } 
+            
             return item
         })
     }

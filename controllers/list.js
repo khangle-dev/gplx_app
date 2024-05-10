@@ -1,4 +1,5 @@
 app.controller("listCtrl", function ($scope) {
+    resetIndex() 
     $scope.countChuaLam = 0;
     $scope.countDung = 0;
     $scope.countSai = 0;
