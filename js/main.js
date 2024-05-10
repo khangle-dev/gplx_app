@@ -286,14 +286,13 @@ function resetIndex() {
         })
     }
 
-    /*
     if (license.code == "B1") {
         fullQuestions = fullQuestions.map(function (question) {
             var item = question
             item.no = item.b1
             return item
         })
-    }*/
+    }
 }
 
 function resetTopic() {
