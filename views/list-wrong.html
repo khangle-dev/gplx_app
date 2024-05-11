@@ -23,7 +23,7 @@
             <div id="answers" style="margin-top: 10px;">
                 <div class="answer {{ getResultClass(q.index, $index, a) }}" ng-repeat="a in q.answers">
                     <div style="width: 20px;">
-                        <input type="radio" name="ans{{$index}}" disabled="disabled" ng-checked="hasChecked(q.index, $index)" />
+                        <input type="radio" id="ans{{$index}}" disabled="disabled" ng-checked="hasChecked(q.index, $index)" />
                     </div>
                     <div class="a-text" style="margin-left: 7px;">{{ a.text }}</div>
                 </div>
