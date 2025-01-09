@@ -1,4 +1,4 @@
-app.controller("nd100Ctrl", function($scope) {
+app.controller("nd168Ctrl", function($scope) {
     var elementTop1 = 0;
     var elementTop2 = 0;
     var elementTop3 = 0;

@@ -57,9 +57,9 @@ app.config(function($routeProvider) {
             templateUrl: "views/user-guide.html",
             controller: "userGuideCtrl"
         })
-        .when("/nd100", {
-            templateUrl: "views/nd100.html",
-            controller: "nd100Ctrl"
+        .when("/nd168", {
+            templateUrl: "views/nd168.html",
+            controller: "nd168Ctrl"
         })
         .when("/list-law", {
             templateUrl: "views/list-law.html",
