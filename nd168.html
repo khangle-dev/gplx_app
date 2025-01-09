@@ -1,58 +1,47 @@
-﻿<html>
+﻿<!DOCTYPE html>
+<html>
 
 <head>
- <meta http-equiv="Content-Type" name="viewport" content="text/html; charset=UTF-8; width=device-width; initial-scale=1.0">
-    <title></title>
-	<style type="text/css">
-    body
-    {
-        font-size: 19px;
-        padding:0;
-        margin:0;
-        padding-bottom: 45px;
-    }
-    .content1
-    {
-       padding:0 10px; 
-    }
-    .menuBT
-    {
-        padding: 5px;
-        height: 40px;
-        position: fixed;
-        bottom: -1px;
-        width: 100%;
-        border-top: 1px solid #b9b9b9;
-        margin: 0;
-        background: #fff;
-        padding-top: 5px;
-    }
-    .menuBT a
-    {
-        padding: 10px;
-        text-decoration: none;
-        color: #333;
-        font-size:20px; font-weight:700;
-        float:left;
-    }
-    .backTop
-    {
-        float:right!important;
-		padding-top: 6px!important;
-    }
-	.backTop img
-    {
-        width:30px;    
-    }
-</style>
-</head>
+    <meta http-equiv="Content-Type" name="viewport" content="text/html; charset=UTF-8; width=device-width; initial-scale=1.0">
+    <link rel="stylesheet" href="css/font-awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.42857;
+            touch-action: manipulation;
+        }
+    </style>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VHXJGGVEFG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
+      gtag('config', 'G-VHXJGGVEFG');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8773158090053301"
+    crossorigin="anonymous"></script>
+</head>
 
 <body>
  
-<div class=content1>
+    <div class="head-navigation">
+        <a class="left" href="index.html">
+            <span style="color:#0171ec" class="fa fa-chevron-left"></span>
+        </a>
+        <div class="center">
+            <strong>Nghị định 100</strong></div>
+        <div class="right">
+        </div>
+    </div>
+    <p></p>
 
-<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width="100%"
+    <div style="margin: 20px;">
+
+<table class=MsoNormalTable border="0px" cellspacing=0 cellpadding=0 width="100%"
  style='width:100.0%;border-collapse:collapse'>
  <tr>
   <td width=223 valign=top style='width:167.4pt;padding:0cm 5.4pt 0cm 5.4pt'>
@@ -6490,6 +6479,7 @@ tịch Ủy ban nhân dân các tỉnh, thành phố trực thuộc trung ương
     </div>
 
 </body>
+
 <script type="text/javascript">
     var elementTop1 = 0;
     var elementTop2 = 0;
@@ -6500,13 +6490,11 @@ tịch Ủy ban nhân dân các tỉnh, thành phố trực thuộc trung ương
     var hash3 = "";
 
     if (window.location.hash) {
-
-    debugger
-        var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
+        var bookmarks = window.location.hash.split("?")
+        var hash = bookmarks[1] //window.location.hash.substring(1); //Puts hash in variable, and removes the # character
         var element = document.getElementsByName(hash)[0];
-        element.style.backgroundColor = "#ffc69c"
+        element.style.backgroundColor = "#C8E6C9"
         elementTop1 = element.offsetTop;
-
 
         if (hash.indexOf("diem_") >= 0) {
 
@@ -6519,20 +6507,17 @@ tịch Ủy ban nhân dân các tỉnh, thành phố trực thuộc trung ương
 
             hash2 = "khoan_" + res1 + "_" + res2;
             var element = document.getElementsByName(hash2)[0];
-            element.style.backgroundColor = "#ffc69c"
+            element.style.backgroundColor = "#C8E6C9"
             elementTop2 = element.offsetTop;
 
             hash3 = "dieu_" + res1;
             var element = document.getElementsByName(hash3)[0];
-            element.style.backgroundColor = "#ffc69c"
+            element.style.backgroundColor = "#C8E6C9"
             elementTop3 = element.offsetTop;
 
             if (res3 == "dd") {
                 res3 = "đ";
             }
-            document.getElementById("hash1").innerHTML = "Điểm " + res3;
-            document.getElementById("hash2").innerHTML = "Khoản " + res2;
-            document.getElementById("hash3").innerHTML = "Điều " + res1;
         }
         if (hash.indexOf("khoan_") >= 0) {
 
@@ -6546,49 +6531,14 @@ tịch Ủy ban nhân dân các tỉnh, thành phố trực thuộc trung ương
             var element = document.getElementsByName(hash2)[0];
             element.style.backgroundColor = "#ffc69c"
             elementTop2 = element.offsetTop;
-
-            document.getElementById("hash1").innerHTML = "Khoản " + res2;
-            document.getElementById("hash2").innerHTML = "Điều " + res1;
-            document.getElementById("hash3").style.display = "none";
         }
-        if (hash.indexOf("dieu_") >= 0) {
 
-            var temp = hash.substring(hash.indexOf("_") + 1);
-
-            document.getElementById("hash1").innerHTML = "Điều " + temp;
-            document.getElementById("hash2").style.display = "none";
-            document.getElementById("hash3").style.display = "none";
-        }
+        let goto = elementTop1 == 0 ? (elementTop2 == 0 ? (elementTop3) : elementTop2) : elementTop1
+        window.scrollTo({
+            top: goto,
+            behavior: 'smooth'
+        })
     }
-    function _scrollHash1() {
-        document.getElementById("hash1").style.color = "#FD8125";
-        document.getElementById("hash2").style.color = "#000";
-        document.getElementById("hash3").style.color = "#000";
-        document.getElementById("hash4").style.color = "#000";
-        window.scrollTo({ top: elementTop1, behavior: 'smooth' });
-    }
-    function _scrollHash2() {
-        document.getElementById("hash2").style.color = "#FD8125";
-        document.getElementById("hash1").style.color = "#000";
-        document.getElementById("hash3").style.color = "#000";
-        document.getElementById("hash4").style.color = "#000";
-        window.scrollTo({ top: elementTop2, behavior: 'smooth' });
-    }
-    function _scrollHash3() {
-        document.getElementById("hash3").style.color = "#FD8125";
-        document.getElementById("hash2").style.color = "#000";
-        document.getElementById("hash1").style.color = "#000";
-        document.getElementById("hash4").style.color = "#000";
-        window.scrollTo({ top: elementTop3, behavior: 'smooth' });
-    }
-
-    function _scrollTop() {
-        document.getElementById("hash2").style.color = "#000";
-        document.getElementById("hash1").style.color = "#000";
-        document.getElementById("hash3").style.color = "#000";
-        document.getElementById("hash4").style.color = "#FD8125";
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
 </script>
+
 </html>
