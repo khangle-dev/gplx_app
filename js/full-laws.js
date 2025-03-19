@@ -28795,6 +28795,7 @@ const fullViolations = [
     }
 ]
 
+  
 const fullLawTopics = [
     { "code": 1, "display": "Hiệu lệnh, chỉ dẫn", "subTitle": "" },
     { "code": 2, "display": "Chuyển hướng, nhường đường", "subTitle": "" },
