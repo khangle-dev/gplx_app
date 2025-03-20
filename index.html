@@ -18,9 +18,23 @@
     <link rel="stylesheet" type="text/css" href="css/segment.css">
     <script>
         if (localStorage.getItem("is_license")) {
-
+            if(localStorage.getItem("is_license").indexOf("_2025") == -1) {
+                if(localStorage.getItem("is_license").startsWith("A1") == true){
+                    localStorage.clear()
+                    localStorage.setItem("is_license", "A_2025")
+                }else{
+                    localStorage.clear()
+                    localStorage.setItem("is_license", "B_2025")
+                }
+            }
         } else {
-            localStorage.setItem("is_license", "B2")
+            localStorage.setItem("is_license", "B_2025")
+        }
+
+        if (localStorage.getItem("is_data_set")) {
+            
+        } else {
+            localStorage.setItem("is_data_set", 0)
         }
     </script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -53,6 +67,7 @@
     <script type="text/javascript" src="js/angular-sanitize.js"></script>
     <script type="text/javascript" src="js/fastclick.js"></script>
     <script type="text/javascript" src="js/full-questions.js"></script>
+    <script type="text/javascript" src="js/full-94-questions.js"></script>
     <script type="text/javascript" src="js/full-signs.js"></script>
     <script type="text/javascript" src="js/full-exams.js"></script>
     <script type="text/javascript" src="js/full-laws.js"></script>

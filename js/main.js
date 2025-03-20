@@ -26,24 +26,21 @@ $(function () {
 
 var db = {
     hasValue: function (key) {
-        var value = localStorage.getItem(key);
-        if (value == null || value == undefined || value == "") {
-            return false;
-        }
-        return true;
+        let value = localStorage.getItem(key);
+        return !(value == null || value == undefined || value == "");
     },
     set: function (key, value) {
         localStorage.setItem(key, value);
     },
     get: function (key) {
-        var value = localStorage.getItem(key);
+        let value = localStorage.getItem(key);
         if (value == null || value == undefined) {
             return "";
         }
         return value;
     },
     getInt: function (key, defaultValue) {
-        var value = db.get(key);
+        let value = db.get(key);
         if (value == "") {
             return defaultValue;
         } else {
@@ -51,7 +48,7 @@ var db = {
         }
     },
     getList: function (key) {
-        var json = db.get(key);
+        let json = db.get(key);
         if (json == "") {
             return [];
         } else {
@@ -65,29 +62,25 @@ function getCurrentQuestionIndex() {
 }
 
 function toggleAnswer(licenseCode, questionIndex, answerIndex) {
-    var key = "is_answer_" + licenseCode + "_" + questionIndex
+    let key = "is_answer_" + licenseCode + "_" + questionIndex
     localStorage.setItem(key, answerIndex)
     return true
 }
 
 function isAnswered(licenseCode, questionIndex, answerIndex) {
-    var key = "is_answer_" + licenseCode + "_" + questionIndex
-    var value = localStorage.getItem(key)
-    if (value == answerIndex) {
-        return true;
-    } else {
-        return false;
-    }
+    let key = "is_answer_" + licenseCode + "_" + questionIndex
+    let value = localStorage.getItem(key)
+    return value == answerIndex
 }
 
 function toggleExamAnswer(licenseCode, examCode, questionIndex, answerIndex) {
-    var key = "is_answer_" + licenseCode + "_" + examCode + "_" + questionIndex
+    let key = "is_answer_" + licenseCode + "_" + examCode + "_" + questionIndex
     localStorage.setItem(key, answerIndex);
     return true
 }
 
 function clearExamAnswer(licenseCode, examCode) {
-    for (i=1; i<=650; i++){
+    for (let i=1; i<=650; i++){
         let key = "is_answer_" + licenseCode + "_" + examCode + "_" + i
         localStorage.removeItem(key);
     }
@@ -96,16 +89,16 @@ function clearExamAnswer(licenseCode, examCode) {
 }
 
 function getExamAnswered(licenseCode, examCode, questionIndex) {
-    var key = "is_answer_" + licenseCode + "_" + examCode + "_" + questionIndex
-    var value = localStorage.getItem(key)
+    let key = "is_answer_" + licenseCode + "_" + examCode + "_" + questionIndex
+    let value = localStorage.getItem(key)
     return value
 }
 
 function isExamAnsweredCorrect(licenseCode, examCode, questionIndex) {
-    var question = fullQuestions.filter(function (question) { return question.index == questionIndex })[0]
+    let question = fullQuestions.filter(function (question) { return question.index == questionIndex })[0]
 
-    for (var answerIndex = 0; answerIndex < question.answers.length; answerIndex++) {
-        var answer = question.answers[answerIndex];
+    for (let answerIndex = 0; answerIndex < question.answers.length; answerIndex++) {
+        let answer = question.answers[answerIndex];
 
         if (answer.correct && getExamAnswered(licenseCode, examCode, questionIndex)==answerIndex) return true;
     }
@@ -113,48 +106,59 @@ function isExamAnsweredCorrect(licenseCode, examCode, questionIndex) {
 }
 
 function hasExamAnswered(licenseCode, examCode, questionIndex) {
-    var key = "is_answer_" + licenseCode + "_" + examCode + "_" + questionIndex
-    var value = localStorage.getItem(key)
-    if (value) {
-        return true;
-    } else {
-        return false;
-    }
+    let key = "is_answer_" + licenseCode + "_" + examCode + "_" + questionIndex
+    let value = localStorage.getItem(key)
+    return value
 }
 
 function getSaveAns(licenseCode, questionIndex) {
-    var key = "is_answer_" + licenseCode + "_" + questionIndex;
-    var value = localStorage.getItem(key);
+    let key = "is_answer_" + licenseCode + "_" + questionIndex;
+    let value = localStorage.getItem(key);
     return value
 }
 
 function isChooseLicense(licenseCode) {
-    var key = "is_license"
-    var value = localStorage.getItem(key);
-    if (value == licenseCode) {
-        return true;
-    } else {
-        return false;
-    }
+    const key = "is_license"
+    const value = localStorage.getItem(key);
+    return value == licenseCode
 }
 
 function chooseLicense(licenseCode) {
-    var key = "is_license"
+    const key = "is_license"
     localStorage.setItem(key, licenseCode);
     return true
 }
 
 function getSavedLicense() {
-    var key = "is_license"
-    var value = localStorage.getItem(key)
+    const key = "is_license"
+    const value = localStorage.getItem(key)
 
-    return value ? value : "B2"
+    return value ? value : "B_2025"
+}
+
+function isChooseDataSet(dataSet) {
+    const key = "is_data_set"
+    const value = localStorage.getItem(key);
+    return value == dataSet
+}
+
+function chooseDataSet(dataSet) {
+    const key = "is_data_set"
+    localStorage.setItem(key, dataSet);
+    return true
+}
+
+function getSavedDataSet() {
+    const key = "is_data_set"
+    const value = localStorage.getItem(key)
+
+    return value ? value : 0
 }
 
 function hasAnswered(licenseCode, questionIndex) {
-    var question = fullQuestions.filter(function (question) { return question.index == questionIndex })[0]
+    let question = fullQuestions.filter(function (question) { return question.index == questionIndex })[0]
 
-    for (var i = 0; i < question.answers.length; i++) {
+    for (let i = 0; i < question.answers.length; i++) {
         if (isAnswered(licenseCode, questionIndex, i)) {
             return true;
         }
@@ -163,9 +167,9 @@ function hasAnswered(licenseCode, questionIndex) {
 }
 
 function isAnsweredWrong(licenseCode, questionIndex) {
-    var question = fullQuestions.filter(function (question) { return question.index == questionIndex })[0]
-    for (var i = 0; i < question.answers.length; i++) {
-        var answer = question.answers[i];
+    let question = fullQuestions.filter(function (question) { return question.index == questionIndex })[0]
+    for (let i = 0; i < question.answers.length; i++) {
+        let answer = question.answers[i];
         if (answer.correct && !isAnswered(licenseCode, questionIndex, i)) return true;
         if (!answer.correct && isAnswered(licenseCode, questionIndex, i)) return true;
     }
@@ -173,18 +177,18 @@ function isAnsweredWrong(licenseCode, questionIndex) {
 }
 
 function saveExam(licenseCode, examCode, result) {
-    var key = "is_saveexam_" + licenseCode + "_" + examCode
+    const key = "is_saveexam_" + licenseCode + "_" + examCode
     localStorage.setItem(key, result)
     return true
 }
 
 function getSavedExam(licenseCode, examCode) {
-    var key = "is_saveexam_" + licenseCode + "_" + examCode
+    const key = "is_saveexam_" + licenseCode + "_" + examCode
     return localStorage.getItem(key)
 }
 
 function showAlertBox(msg, closeText, callback) {
-    var boxHtml = "<div id='alert-box' style='position: fixed; z-index: 99999; top: 0px; left: 0px; width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; background-color: rgba(0, 0, 0, 0.5);'>"
+    const boxHtml = "<div id='alert-box' style='position: fixed; z-index: 99999; top: 0px; left: 0px; width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; background-color: rgba(0, 0, 0, 0.5);'>"
         + "<div style='border: 1px solid #505050; padding: 15px; background-color: #fff; border-radius: 10px;'>"
         + "<div>" + msg + "</div>"
         + "<div style='text-align: center; margin-top: 15px;'>"
@@ -201,8 +205,8 @@ function showAlertBox(msg, closeText, callback) {
 
 function getPara(url, name) {
     url = url + ""; // convert to string
-    var array = url.split(/\?|&/);
-    var i = 0;
+    let array = url.split(/\?|&/);
+    let i = 0;
     for (i = 1; i < array.length; i++) {
         if (array[i].split('=')[0].toLowerCase() == name.toLowerCase()) return array[i].split('=')[1];
     }
@@ -210,21 +214,21 @@ function getPara(url, name) {
 }
 
 function getParaCurr(name) {
-    var url = document.location;
+    const url = document.location;
     return getPara(url, name);
 }
 
 function setPara(url, name, value) {
     url = url + ""; // convert to string
-    var check = false;
-    var isFirst = true;
-    var ret = "";
-    var array = url.split(/\?|&/);
+    let check = false;
+    let isFirst = true;
+    let ret = "";
+    let array = url.split(/\?|&/);
     ret = ret + array[0];
-    var i = 0;
+    let i = 0;
     for (i = 1; i < array.length; i++) {
-        var N = array[i].split('=')[0];
-        var V = array[i].split('=')[1];
+        let N = array[i].split('=')[0];
+        let V = array[i].split('=')[1];
         if (N == name) {
             V = value;
             check = true;
@@ -241,12 +245,32 @@ function getOuterHtml(jqueryElement) {
 }
 
 function resetQuestion() {
-    fullQuestions = ["B2", "C", "D", "E", "F"].includes(localStorage.getItem("is_license")) ? originalQuestions :
-        (["B1"].includes(localStorage.getItem("is_license")) ? originalQuestions.filter(function (question) { return question.b1 > 0 }) :
-            (["A3", "A4"].includes(localStorage.getItem("is_license")) ? originalQuestions.filter(function (question) { return question.a3 > 0 }) :
-                (["A1"].includes(localStorage.getItem("is_license")) ? originalQuestions.filter(function (question) { return question.a1 > 0 }) :
-                    (["A2"].includes(localStorage.getItem("is_license")) ? originalQuestions.filter(function (question) { return question.a2 > 0 }) : [])))
-        )
+    const licenseType = localStorage.getItem("is_license");
+    const filterConditions = {
+        "A1_2025": (question) => question.a1 > 0,
+        "A_2025": (question) => question.a2 > 0,
+        "B1_2025": (question) => question.a34 > 0,
+        "B_2025": () => true,
+        "C1_2025": () => true,
+        "C_2025": () => true,
+        "D1_2025": () => true,
+        "D2_2025": () => true,
+        "D_2025": () => true,
+        "D2_2025": () => true,
+        "D_2025": () => true,
+        "BE_2025": () => true,
+        "C1E_2025": () => true,
+        "CE_2025": () => true,
+        "D1E_2025": () => true,
+        "D2E_2025": () => true,
+        "DE_2025": () => true
+        };
+        
+    const filterFunction = filterConditions[licenseType];
+
+    fullQuestions = filterFunction 
+    ? originalQuestions.filter(filterFunction)
+    : (filterConditions[licenseType] === true ? originalQuestions : []);
 
     dangerQuestions = fullQuestions.filter(function (question) {
         return question.required > 0;
@@ -254,45 +278,34 @@ function resetQuestion() {
 
 }
 function resetIndex() {
-    if (license.code == "A1") {
+
+    if(isChooseDataSet(0)) {
+        fullQuestions = fullQuestions.map(question => {
+            const item = original94Questions.find(q => q.no === question.no);
+            return item ?? question;
+        });
+    }
+
+    if (license.code == "A1_2025") {
         fullQuestions = fullQuestions.map(function (question) {
-            var item = { ...question }
+            let item = { ...question }
             item.no = item.a1
             return item
         })
     }
 
-    if (license.code == "A2") {
+    if (license.code == "A_2025") {
         fullQuestions = fullQuestions.map(function (question) {
-            var item = { ...question }
+            let item = { ...question }
             item.no = item.a2
             return item
         })
     }
 
-    if (license.code == "A3") {
+    if (license.code == "B1_2025") {
         fullQuestions = fullQuestions.map(function (question) {
-            var item = { ...question }
-            item.no = item.a3
-            return item
-        })
-    }
-
-    if (license.code == "A4") {
-        fullQuestions = fullQuestions.map(function (question) {
-            var item = { ...question }
-            item.no = item.a4
-            return item
-        })
-    }
-
-    if (license.code == "B1") {
-        fullQuestions = originalQuestions.filter(function (item) { return item.b1 > 0 }).map(function (question) {
-            var item = { ...question }
-            if (item.no >= 193) {
-                item.no = item.no - 26
-            } 
-            
+            let item = { ...question }
+            item.no = item.a34
             return item
         })
     }
@@ -300,15 +313,15 @@ function resetIndex() {
 
 function resetTopic() {
 
-    var numOfQuestion = fullQuestions.length
-    var numOfTopic1 = fullQuestions.filter(function (question) { return question.topic == 1 }).length
-    var numOfTopic2 = fullQuestions.filter(function (question) { return question.topic == 2 }).length
-    var numOfTopic3 = fullQuestions.filter(function (question) { return question.topic == 3 }).length
-    var numOfTopic4 = fullQuestions.filter(function (question) { return question.topic == 4 }).length
-    var numOfTopic5 = fullQuestions.filter(function (question) { return question.topic == 5 }).length
-    var numOfTopic6 = fullQuestions.filter(function (question) { return question.topic == 6 }).length
-    var numOfTopic7 = fullQuestions.filter(function (question) { return question.topic == 7 }).length
-    var numOfTopic8 = fullQuestions.filter(function (question) { return question.required > 0 }).length
+    let numOfQuestion = fullQuestions.length
+    let numOfTopic1 = fullQuestions.filter(function (question) { return question.topic == 1 }).length
+    let numOfTopic2 = fullQuestions.filter(function (question) { return question.topic == 2 }).length
+    let numOfTopic3 = fullQuestions.filter(function (question) { return question.topic == 3 }).length
+    let numOfTopic4 = fullQuestions.filter(function (question) { return question.topic == 4 }).length
+    let numOfTopic5 = fullQuestions.filter(function (question) { return question.topic == 5 }).length
+    let numOfTopic6 = fullQuestions.filter(function (question) { return question.topic == 6 }).length
+    let numOfTopic7 = fullQuestions.filter(function (question) { return question.topic == 7 }).length
+    let numOfTopic8 = fullQuestions.filter(function (question) { return question.required > 0 }).length
 
     topics = [
         { "code": 0, "display": "Toàn bộ câu hỏi", "subTitle": `${numOfQuestion} câu`, "num": numOfQuestion },
