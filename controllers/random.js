@@ -12,22 +12,19 @@ app.controller("randomCtrl", function ($scope, $interval) {
     resetIndex()
 
     $scope.questions = []
-    for (i=1; i<=7; i++){
-        let randOfTopic = fullQuestions.filter(function(question){return question.topic == i})
+    for (i=1; i<=6; i++){
+        let randOfTopic = fullQuestions.filter(function(question){return question.topic == i && isRequired(question, license.code)==false})
         let num = license.randQuestions.filter(function (rand) {return rand.topicCode == i})[0].num
+        
+        let set = shuffle(randOfTopic).slice(0, num);
 
-        let set = new Set()
-        if (num > 0) {
-            while (set.size < num) {
-                let rand = randOfTopic.random()
-                set.add(rand)
-            }
-        }
-
-        set.forEach(function(item) {
-            $scope.questions.push(item)
-        })
+        console.log(`Set count: ${set.length} for topic ${i} with num ${num}`);
+    
+        $scope.questions.push(...set)
     }
+
+    let required = shuffle(fullQuestions.filter(function(question){return isRequired(question, license.code)}))
+    $scope.questions.push(...required.slice(0, 1))
 
     $scope.countDown = license.timer
 
@@ -49,8 +46,17 @@ app.controller("randomCtrl", function ($scope, $interval) {
         $scope.show_result = false
 
         $scope.question = $scope.questions[index]
-        $scope.dangerCss = ($scope.question.required > 0) ? "color:#ff9400" : ""
+        $scope.dangerCss = isRequired($scope.question, license.code) ? "color:#ff9400" : ""
     }
+
+    function shuffle(array) {
+        const result = [...array];
+        for (let i = result.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [result[i], result[j]] = [result[j], result[i]];
+        }
+    return result;
+}
 
     $scope.nextQuestion = function() {
         let index = $scope.index
@@ -70,6 +76,25 @@ app.controller("randomCtrl", function ($scope, $interval) {
         load(index)
     }
 
+    $scope.getAnswerClass = function (answerIndex) {
+        if (!$scope.show_result) {
+            return ""
+        }
+
+        var answer = $scope.question.answers[answerIndex];
+        if (answer.correct) {
+            return "correct"
+        } else if (isAnswered($scope.licenseCode, $scope.question.index, answerIndex)) {
+            return "wrong"
+        } else {
+            return ""
+        }
+    };
+
+    $scope.toggleResult = function () {
+        $scope.show_result = !$scope.show_result
+    };
+
     $scope.toggleAnswer = function (answerIndex) {
         toggleExamAnswer($scope.licenseCode, $scope.examCode, $scope.question.index, answerIndex)
         toggleAnswer($scope.licenseCode, $scope.question.index, answerIndex)
@@ -83,7 +108,7 @@ app.controller("randomCtrl", function ($scope, $interval) {
         let saveAnses = $scope.questions.map(function(question){
             return isExamAnsweredCorrect($scope.licenseCode, $scope.examCode, question.index)
         })
-        let dangerQuestions = $scope.questions.filter(function(question){return question.required > 0})
+        let dangerQuestions = $scope.questions.filter(function(question){return isRequired(question, license.code)})
         let dangerCorrectAnses  = dangerQuestions.map(function(question){return isExamAnsweredCorrect($scope.licenseCode, $scope.examCode, question.index) }).filter(function(correct){return correct == true})
         let danger = dangerCorrectAnses.length
         let passed = saveAnses.filter(function(ans){return ans == true}).length

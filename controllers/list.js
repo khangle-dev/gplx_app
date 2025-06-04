@@ -7,7 +7,7 @@ app.controller("listCtrl", function ($scope) {
     $scope.questions = fullQuestions
 
     $scope.questions.forEach(function(question){
-        var danger_css =question.required > 0 ? "danger" : ""
+        var danger_css = isRequired(question, license.code) ? "danger" : ""
         var css_class = "" + danger_css;
 
         if (!hasAnswered(license.code, question.index)) {

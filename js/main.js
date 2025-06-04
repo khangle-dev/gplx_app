@@ -249,7 +249,7 @@ function resetQuestion() {
     const filterConditions = {
         "A1_2025": (question) => question.a1 > 0,
         "A_2025": (question) => question.a2 > 0,
-        "B1_2025": (question) => question.a34 > 0,
+        "B1_2025": (question) => question.b1 > 0,
         "B_2025": () => true,
         "C1_2025": () => true,
         "C_2025": () => true,
@@ -266,26 +266,49 @@ function resetQuestion() {
         "DE_2025": () => true
         };
         
+    const filterRequiredConditions = {
+        "A1_2025": (question) => question.required1 > 0,
+        "A_2025": (question) => question.required1 > 0,
+        "B1_2025": (question) => question.required2 > 0,
+        "B_2025": (question) => question.required3 > 0,
+        "C1_2025": (question) => question.required3 > 0,
+        "C_2025": (question) => question.required3 > 0,
+        "D1_2025": (question) => question.required3 > 0,
+        "D2_2025": (question) => question.required3 > 0,
+        "D_2025": (question) => question.required3 > 0,
+        "D2_2025": (question) => question.required3 > 0,
+        "D_2025": (question) => question.required3 > 0,
+        "BE_2025": (question) => question.required3 > 0,
+        "C1E_2025": (question) => question.required3 > 0,
+        "CE_2025": (question) => question.required3 > 0,
+        "D1E_2025": (question) => question.required3 > 0,
+        "D2E_2025": (question) => question.required3 > 0,
+        "DE_2025": (question) => question.required3 > 0
+        };
+
     const filterFunction = filterConditions[licenseType];
+    const filterRequiredFunction = filterRequiredConditions[licenseType];
 
     fullQuestions = filterFunction 
     ? originalQuestions.filter(filterFunction)
     : (filterConditions[licenseType] === true ? originalQuestions : []);
 
-    dangerQuestions = fullQuestions.filter(function (question) {
-        return question.required > 0;
-    })
-
+    dangerQuestions = fullQuestions.filter(filterRequiredFunction)
 }
-function resetIndex() {
 
-    if(isChooseDataSet(0)) {
-        fullQuestions = fullQuestions.map(question => {
-            const item = original94Questions.find(q => q.no === question.no);
-            return item ?? question;
-        });
+function isRequired(question, licenseCode) {
+    if (licenseCode == "A1_2025") {
+        return question.required1 > 0;
+    } else if (licenseCode == "A_2025") {
+        return question.required1 > 0;
+    } else if (licenseCode == "B1_2025") {
+        return question.required2 > 0;
+    } else {
+        return question.required3 > 0;
     }
+}
 
+function resetIndex() {
     if (license.code == "A1_2025") {
         fullQuestions = fullQuestions.map(function (question) {
             let item = { ...question }
@@ -305,7 +328,7 @@ function resetIndex() {
     if (license.code == "B1_2025") {
         fullQuestions = fullQuestions.map(function (question) {
             let item = { ...question }
-            item.no = item.a34
+            item.no = item.b1
             return item
         })
     }
@@ -321,16 +344,15 @@ function resetTopic() {
     let numOfTopic5 = fullQuestions.filter(function (question) { return question.topic == 5 }).length
     let numOfTopic6 = fullQuestions.filter(function (question) { return question.topic == 6 }).length
     let numOfTopic7 = fullQuestions.filter(function (question) { return question.topic == 7 }).length
-    let numOfTopic8 = fullQuestions.filter(function (question) { return question.required > 0 }).length
+    let numOfTopic8 = fullQuestions.filter(function (question) { return isRequired(question, license.code) }).length
 
     topics = [
         { "code": 0, "display": "Toàn bộ câu hỏi", "subTitle": `${numOfQuestion} câu`, "num": numOfQuestion },
-        { "code": 1, "display": "Khái niệm và quy tắc giao thông", "subTitle": `${numOfTopic1} câu`, "num": numOfTopic1 },
-        { "code": 2, "display": "Nghiệp vụ vận tải", "subTitle": `${numOfTopic2} câu`, "num": numOfTopic2 },
-        { "code": 3, "display": "Văn hoá và đạo đức", "subTitle": `${numOfTopic3} câu`, "num": numOfTopic3 },
-        { "code": 4, "display": "Kỹ thuật lái xe", "subTitle": `${numOfTopic4} câu`, "num": numOfTopic4 },
-        { "code": 5, "display": "Cấu tạo và sữa chữa", "subTitle": `${numOfTopic5} câu`, "num": numOfTopic5 },
-        { "code": 6, "display": "Biển báo và đường bộ", "subTitle": `${numOfTopic6} câu`, "num": numOfTopic6 },
-        { "code": 7, "display": "Sa hình", "subTitle": `${numOfTopic7} câu`, "num": numOfTopic7 },
+        { "code": 1, "display": "Quy định chung và quy tắc giao thông đường bộ", "subTitle": `${numOfTopic1} câu`, "num": numOfTopic1 },
+        { "code": 2, "display": "Văn hóa giao thông, đạo đức người lái xe, kỹ năng phòng cháy, chữa cháy và cứu hộ, cứu nạn", "subTitle": `${numOfTopic2} câu`, "num": numOfTopic2 },
+        { "code": 3, "display": "Kỹ thuật lái xe", "subTitle": `${numOfTopic3} câu`, "num": numOfTopic3 },
+        { "code": 4, "display": "Cấu tạo và sửa chữa", "subTitle": `${numOfTopic4} câu`, "num": numOfTopic4 },
+        { "code": 5, "display": "Báo hiệu đường bộ", "subTitle": `${numOfTopic5} câu`, "num": numOfTopic5 },
+        { "code": 6, "display": "Giải thế sa hình và kỹ năng xử lý tình huống giao thông", "subTitle": `${numOfTopic6} câu`, "num": numOfTopic6 },
         { "code": 8, "display": "Câu liệt", "subTitle": `${numOfTopic8} câu`, "num": numOfTopic8 }];
 }

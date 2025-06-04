@@ -8,7 +8,7 @@ app.controller("settingCtrl", function ($scope) {
         const filterConditions = {
             "A1_2025": (question) => question.a1 > 0,
             "A_2025": (question) => question.a2 > 0,
-            "B1_2025": (question) => question.a34 > 0,
+            "B1_2025": (question) => question.b1 > 0,
             "B_2025": () => true,
             "C1_2025": () => true,
             "C_2025": () => true,
@@ -31,18 +31,30 @@ app.controller("settingCtrl", function ($scope) {
         ? originalQuestions.filter(filterFunction)
         : (filterConditions[licenseType] === true ? originalQuestions : []);
 
-        resetIndex()
-    };
+        const filterRequiredConditions = {
+        "A1_2025": (question) => question.required1 > 0,
+        "A_2025": (question) => question.required1 > 0,
+        "B1_2025": (question) => question.required2 > 0,
+        "B_2025": (question) => question.required3 > 0,
+        "C1_2025": (question) => question.required3 > 0,
+        "C_2025": (question) => question.required3 > 0,
+        "D1_2025": (question) => question.required3 > 0,
+        "D2_2025": (question) => question.required3 > 0,
+        "D_2025": (question) => question.required3 > 0,
+        "D2_2025": (question) => question.required3 > 0,
+        "D_2025": (question) => question.required3 > 0,
+        "BE_2025": (question) => question.required3 > 0,
+        "C1E_2025": (question) => question.required3 > 0,
+        "CE_2025": (question) => question.required3 > 0,
+        "D1E_2025": (question) => question.required3 > 0,
+        "D2E_2025": (question) => question.required3 > 0,
+        "DE_2025": (question) => question.required3 > 0
+        };
 
-    $scope.isChoose2025 = function(){
-        return isChooseDataSet(0)
-    }
-    $scope.chooseDataSet = function (dataSet) {
+        const filterRequiredFunction = filterRequiredConditions[licenseType]
+        dangerQuestions = fullQuestions.filter(filterRequiredFunction)
+
         resetIndex()
-        chooseDataSet(dataSet)
-    }
-    $scope.isChooseDataSet = function (dataSet) {
-        return isChooseDataSet(dataSet)
     };
 
     $scope.isChoose = function (licenseCode) {

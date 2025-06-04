@@ -31,7 +31,7 @@ app.controller("examCtrl", function ($scope, $interval) {
         $scope.show_result = false
 
         $scope.question = $scope.questions[index]
-        $scope.dangerCss = ($scope.question.required > 0) ? "color:#ff9400" : ""
+        $scope.dangerCss = isRequired($scope.question, license.code) ? "color:#ff9400" : ""
     }
 
     $scope.nextQuestion = function() {
@@ -52,6 +52,21 @@ app.controller("examCtrl", function ($scope, $interval) {
         load(index)
     }
 
+    $scope.getAnswerClass = function (answerIndex) {
+        if (!$scope.show_result) {
+            return ""
+        }
+
+        var answer = $scope.question.answers[answerIndex];
+        if (answer.correct) {
+            return "correct"
+        } else if (isAnswered($scope.licenseCode, $scope.question.index, answerIndex)) {
+            return "wrong"
+        } else {
+            return ""
+        }
+    };
+
     $scope.toggleAnswer = function (answerIndex) {
         toggleExamAnswer($scope.licenseCode, $scope.examCode, $scope.question.index, answerIndex)
         toggleAnswer($scope.licenseCode, $scope.question.index, answerIndex)
@@ -61,11 +76,15 @@ app.controller("examCtrl", function ($scope, $interval) {
         return getExamAnswered($scope.licenseCode, $scope.examCode, $scope.question.index) == answerIndex ? "checked" : ""
     }
 
+    $scope.toggleResult = function () {
+        $scope.show_result = !$scope.show_result
+    }
+
     $scope.submit = function() {
         let saveAnses = $scope.questionNos.map(function(questionIndex){
             return isExamAnsweredCorrect($scope.licenseCode, $scope.examCode, questionIndex)
         })
-        let dangerQuestions = $scope.questions.filter(function(question){return question.required > 0})
+        let dangerQuestions = $scope.questions.filter(function(question){return isRequired(question, license.code)})
         let dangerCorrectAnses  = dangerQuestions.map(function(question){return isExamAnsweredCorrect($scope.licenseCode, $scope.examCode, question.index) }).filter(function(correct){return correct == true})
         let danger = dangerCorrectAnses.length
         let passed = saveAnses.filter(function(ans){return ans == true}).length
